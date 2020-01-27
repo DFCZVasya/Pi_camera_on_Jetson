@@ -37,7 +37,6 @@ def gstreamer_pipeline(
 
 def show_camera():
 	yolo = YOLO('model_data/yolo-tiny.h5', 'model_data/tiny_yolo_anchors.txt', 'model_data/coco_classes.txt')
-	print(gstreamer_pipeline(flip_method=0))
     cap = cv2.VideoCapture(gstreamer_pipeline(flip_method=0), cv2.CAP_GSTREAMER)
     if cap.isOpened():
         window_handle = cv2.namedWindow("CSI Camera", cv2.WINDOW_AUTOSIZE)
