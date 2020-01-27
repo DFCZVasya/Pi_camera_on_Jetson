@@ -60,7 +60,7 @@ def show_camera():
                     text = 'classID = {}'.format(box[4])
                     cv2.putText(frame, text, (box[0], box[1] - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,0,0), 2)
 
-            cv2.imshow("CSI Camera", img)
+            cv2.imshow("CSI Camera", frame)
             # This also acts as
             keyCode = cv2.waitKey(30) & 0xFF
             # Stop the program on the ESC key
