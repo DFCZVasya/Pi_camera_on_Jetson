@@ -55,7 +55,6 @@ def show_camera():
                     (x, y) = (int(box[0]), int(box[1]))
                     (w, h) = (int(box[2]), int(box[3]))
                     bbox = [x, y, w, h, box[4]]
-                    output_classes.append(bbox[4])
                     cv2.rectangle(frame, (bbox[0], bbox[1]), (bbox[2], bbox[3]), (0,255,0), 2)
                     text = 'classID = {}'.format(box[4])
                     cv2.putText(frame, text, (box[0], box[1] - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,0,0), 2)
