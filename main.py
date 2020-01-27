@@ -68,7 +68,7 @@ def show_camera():
                 break
         cap.release()
         cv2.destroyAllWindows()
-		yolo.close_session()
+        yolo.close_session()
     else:
         print("Unable to open camera")
 
