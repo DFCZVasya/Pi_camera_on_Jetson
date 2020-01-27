@@ -52,12 +52,10 @@ def show_camera():
     cap = cv2.VideoCapture(gstreamer_pipeline(flip_method=0), cv2.CAP_GSTREAMER)
     if cap.isOpened():
         window_handle = cv2.namedWindow("CSI Camera", cv2.WINDOW_AUTOSIZE)
-        # Window
         while cv2.getWindowProperty("CSI Camera", 0) >= 0:
             ret_val, frame = cap.read()
-			frame = take_and_resize(frame)
-			outBoxes = yolo.detect_image(frame) #Here you can make whatever you want (return[top left x, top left y, bottom right x, bottom right y, class name])
-
+            frame = take_and_resize(frame)
+            outBoxes = yolo.detect_image(frame)
 			frame = np.asarray(frame)
 			if len(outBoxes) > 0:
 				for box in outBoxes:
