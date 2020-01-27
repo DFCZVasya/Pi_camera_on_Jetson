@@ -8,10 +8,10 @@ import numpy as np
 
 
 def gstreamer_pipeline(
-    capture_width=314,
-    capture_height=314,
-    display_width=314,
-    display_height=314,
+    capture_width=1280,
+    capture_height=720,
+    display_width=1280,
+    display_height=720,
     framerate=60,
     flip_method=0,
 ):
