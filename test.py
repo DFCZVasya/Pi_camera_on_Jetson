@@ -19,10 +19,10 @@ import numpy as np
 
 
 def gstreamer_pipeline(
-    capture_width=1280,
-    capture_height=720,
-    display_width=1280,
-    display_height=720,
+    capture_width=314,
+    capture_height=314,
+    display_width=314,
+    display_height=314,
     framerate=60,
     flip_method=0,
 ):
@@ -48,8 +48,7 @@ def gstreamer_pipeline(
 
 def show_camera():
 	yolo = YOLO('model_data/yolo-tiny.h5', 'model_data/tiny_yolo_anchors.txt', 'model_data/coco_classes.txt')
-    # To flip the image, modify the flip_method parameter (0 and 2 are the most common)
-    print(gstreamer_pipeline(flip_method=0))
+	print(gstreamer_pipeline(flip_method=0))
     cap = cv2.VideoCapture(gstreamer_pipeline(flip_method=0), cv2.CAP_GSTREAMER)
     if cap.isOpened():
         window_handle = cv2.namedWindow("CSI Camera", cv2.WINDOW_AUTOSIZE)
@@ -58,7 +57,7 @@ def show_camera():
             ret_val, frame = cap.read()
 			frame = take_and_resize(frame)
 			outBoxes = yolo.detect_image(frame) #Here you can make whatever you want (return[top left x, top left y, bottom right x, bottom right y, class name])
-        
+
 			frame = np.asarray(frame)
 			if len(outBoxes) > 0:
 				for box in outBoxes:
@@ -70,7 +69,7 @@ def show_camera():
 					cv2.rectangle(frame, (bbox[0], bbox[1]), (bbox[2], bbox[3]), (0,255,0), 2)
 					text = 'classID = {}'.format(box[4])
 					cv2.putText(frame, text, (box[0], box[1] - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,0,0), 2)
-            
+
 			cv2.imshow("CSI Camera", img)
             # This also acts as
             keyCode = cv2.waitKey(30) & 0xFF
