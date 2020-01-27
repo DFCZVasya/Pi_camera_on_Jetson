@@ -3,8 +3,8 @@ from PIL import Image
 
 def take_and_resize(frame, output_size = 314):
     crop_coords = []
-    height = frame.shape[0]
-    width = frame.shape[1]
+    height = 360
+    width = 640
     min_side = min(height, width)
     frame = Image.fromarray(frame)
     if min_side == height:
